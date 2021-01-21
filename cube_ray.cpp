@@ -6,18 +6,23 @@
 using namespace std;
 
 void printArray(int array[][ARRAY_SIZE][ARRAY_SIZE]);
-void printStraightRay(int array[][ARRAY_SIZE][ARRAY_SIZE]);
-void printTopRay(int array[][ARRAY_SIZE][ARRAY_SIZE]);
-void printSideRay(int array[][ARRAY_SIZE][ARRAY_SIZE]);
+void printStraightRay(int array[][ARRAY_SIZE][ARRAY_SIZE], bool &ray);
+void printTopRay(int array[][ARRAY_SIZE][ARRAY_SIZE], bool &ray);
+void printSideRay(int array[][ARRAY_SIZE][ARRAY_SIZE], bool &ray);
 
 int main()
 {
 	int cube[ARRAY_SIZE][ARRAY_SIZE][ARRAY_SIZE] = {0};
+	bool isRay = false;
 	
 	printArray(cube);
-	printStraightRay(cube);
-	printTopRay(cube);
-	printSideRay(cube);
+	printStraightRay(cube, isRay);
+	printTopRay(cube, isRay);
+	printSideRay(cube, isRay);
+	
+	if (!isRay){
+		cout << "We don't have any pass rays.";
+	}
 	
 	return 0;
 }
@@ -36,7 +41,7 @@ void printArray(int array[][ARRAY_SIZE][ARRAY_SIZE])
 	}
 }
 
-void printStraightRay(int array[][ARRAY_SIZE][ARRAY_SIZE])
+void printStraightRay(int array[][ARRAY_SIZE][ARRAY_SIZE], bool &ray)
 {
 	int counter = 0;
 	
@@ -49,13 +54,14 @@ void printStraightRay(int array[][ARRAY_SIZE][ARRAY_SIZE])
 				}
 				if (counter == ARRAY_SIZE){
 					cout << "Straight ray is: " << endl << "X: " << x << " Y: " << y << endl << endl;
+					ray = true;
 				}
 			}
 		}	
 	}
 }
 
-void printTopRay(int array[][ARRAY_SIZE][ARRAY_SIZE])
+void printTopRay(int array[][ARRAY_SIZE][ARRAY_SIZE], bool &ray)
 {
 	int counter = 0;
 	
@@ -68,13 +74,14 @@ void printTopRay(int array[][ARRAY_SIZE][ARRAY_SIZE])
 				}
 				if (counter == ARRAY_SIZE){
 					cout << "Top ray is: " << endl << "I: " << i << " Y: " << y << endl << endl;
+					ray = true;
 				}
 			}
 		}
 	}
 }
 
-void printSideRay(int array[][ARRAY_SIZE][ARRAY_SIZE])
+void printSideRay(int array[][ARRAY_SIZE][ARRAY_SIZE], bool &ray)
 {
 	int counter = 0;
 	
@@ -87,6 +94,7 @@ void printSideRay(int array[][ARRAY_SIZE][ARRAY_SIZE])
 				}
 				if (counter == ARRAY_SIZE){
 					cout << "Side ray is: " << endl << "I: " << i << " X: " << x << endl << endl;
+					ray = true;
 				}
 			}
 		}
