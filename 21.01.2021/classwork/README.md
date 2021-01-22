@@ -1,4 +1,4 @@
-[КОМПЬЮТЕРНАЯ ЛИНГВИСТИКА](https://github.com/repinnick/devIncHomework/tree/main/21.01.2021/classwork)
+[КОМПЬЮТЕРНАЯ ЛИНГВИСТИКА](https://github.com/repinnick/devIncHomework/blob/main/21.01.2021/classwork/computer_ling.cpp)
 
 <ol>
     <li>сколько слов в тексте</li>
