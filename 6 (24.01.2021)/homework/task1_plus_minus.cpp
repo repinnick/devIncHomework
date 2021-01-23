@@ -8,7 +8,7 @@ bool isDigit(char x);
 
 int main()
 {
-	char text[N] = "so527me text '523' and sume numbers 632"; 
+	char text[N] = "so527me 0text '523' and sume numbers 632"; 
 	char newText[N] = "";
 	char number;
 	
@@ -26,7 +26,7 @@ int main()
 				else
 					newText[itext] = '-';
 				itext++;
-				}
+			}
 		}
 		else {
 			newText[itext] = text[i];
