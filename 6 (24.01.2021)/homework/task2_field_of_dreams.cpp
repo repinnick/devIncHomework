@@ -29,7 +29,7 @@ int main()
 		if (strlen(inputLetter) == size and isEqual(word, inputLetter, size))
 			for (int i = 0; i < strlen(word); i++)
 				guessWord[i] = inputLetter[i];
-		else 
+		else if (strlen(inputLetter) == 1)
 			for (int i = 0; word[i] != '\0'; i++)
 				if (inputLetter[0] == word[i])
 					guessWord[i] = inputLetter[0];
