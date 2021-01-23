@@ -7,49 +7,37 @@
 
 using namespace std;
 
-int sizeOfArray(char word[]);
 void printField(char word[], int size);
 bool isEqual(char word[], char guessWord[], int size);
-
-//getchar()
 
 int main()
 {
 	char word[N] = "conversation";
-	char inputLetter;
+	char inputLetter[N];
 	
-	int size = sizeOfArray(word);
+	int size = strlen(word);
 	char guessWord[size] = {EMPTY};
 
 	printField(guessWord, size);
+	
 	while (!isEqual(word, guessWord, size)){
-		
-		
 		cout << "Enter the letter: ";
 		cin >> inputLetter;
 		cout << endl;
 		
-		for (int i = 0; word[i] != '\0'; i++){
-			if (inputLetter == word[i]){
-				guessWord[i] = inputLetter;
-			}
-		}
 		
-		printField(guessWord, size);
-//		int letterSize = sizeOfArray(inputLetter);
-			
+		if (strlen(inputLetter) == size and isEqual(word, inputLetter, size))
+			for (int i = 0; i < strlen(word); i++)
+				guessWord[i] = inputLetter[i];
+		else 
+			for (int i = 0; word[i] != '\0'; i++)
+				if (inputLetter[0] == word[i])
+					guessWord[i] = inputLetter[0];
+		
+		printField(guessWord, size);	
 	}
 	
 	return 0;
-}
-
-int sizeOfArray(char word[])
-{
-	int i = 0;
-	
-	for (; word[i] != '\0'; i++)
-		;
-	return i;
 }
 
 void printField(char word[], int size)
