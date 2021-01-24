@@ -8,10 +8,13 @@ bool isSeparator(char c);
 bool isEqual(char tempWord[], char word[]);
 void writeTempWord(char tempWord[], char word[]);
 
+void wordWriter(int& itemNT, char newText[], char word[]);
+
 int main()
 {
 	char text[N], word[N], newText[N];
 	int iw = 0;
+	int itemNT = 0;
 	
 	char tempWord[N];
 	
@@ -24,20 +27,21 @@ int main()
 			iw++;
 			if(isSeparator(text[i + 1]) or text[i + 1] == '\0'){
 				word[iw] = '\0';
-				if (isEqual(tempWord, word)){
-					cout << "EQUAL! " << word << endl;
-				}
-				else
+				if (!isEqual(tempWord, word)){
 					writeTempWord(tempWord, word);
+					wordWriter(itemNT, newText, word);
+				}
 				iw = 0;
 			} 
 		}
-//		newText[i] = text[i];
+		else{
+			newText[itemNT] = text[i];
+			itemNT++;
+		}	
 	}
+	newText[itemNT] = '\0';
 	
-	cout << "Temp: " << tempWord << endl;
-	cout << "Word: " << word << endl;
-	cout << "New text: " << newText << endl;
+	cout << endl << "New text: " << newText << endl;
 
 	return 0;
 }
@@ -68,4 +72,12 @@ void writeTempWord(char tempWord[], char word[])
 		tempWord[i] = word[i];
 	}
 	tempWord[i] = '\0';
+}
+
+void wordWriter(int& itemNT, char newText[], char word[])
+{
+	for (int i = 0; word[i] != '\0'; i++){
+		newText[itemNT] = word[i];
+		itemNT++;
+	}
 }
