@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 
 #define N 128
 
@@ -7,8 +8,7 @@ using namespace std;
 bool isSeparator(char c);
 bool isEqual(char tempWord[], char word[]);
 void writeTempWord(char tempWord[], char word[]);
-
-void wordWriter(int& itemNT, char newText[], char word[]);
+void writeNewWord(int& itemNT, char newText[], char word[]);
 
 int main()
 {
@@ -27,9 +27,9 @@ int main()
 			iw++;
 			if(isSeparator(text[i + 1]) or text[i + 1] == '\0'){
 				word[iw] = '\0';
-				if (!isEqual(tempWord, word)){
+				if (!isEqual(strlwr(tempWord), strlwr(word))){
 					writeTempWord(tempWord, word);
-					wordWriter(itemNT, newText, word);
+					writeNewWord(itemNT, newText, word);
 				}
 				iw = 0;
 			} 
@@ -67,14 +67,15 @@ bool isEqual(char tempWord[], char word[])
 }
 
 void writeTempWord(char tempWord[], char word[])
-{	int i = 0;
+{	
+	int i = 0;
 	for ( ; word[i] != '\0'; i++){
 		tempWord[i] = word[i];
 	}
 	tempWord[i] = '\0';
 }
 
-void wordWriter(int& itemNT, char newText[], char word[])
+void writeNewWord(int& itemNT, char newText[], char word[])
 {
 	for (int i = 0; word[i] != '\0'; i++){
 		newText[itemNT] = word[i];
