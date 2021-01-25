@@ -34,10 +34,10 @@ int main()
 				iw = 0;
 			} 
 		}
-		else{
+		else {
 			newText[itemNT] = text[i];
 			itemNT++;
-		}	
+		}
 	}
 	newText[itemNT] = '\0';
 	

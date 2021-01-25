@@ -7,25 +7,27 @@
 
 using namespace std;
 
-void printField(char [], int size);
+void printField(char word[], int size, char question[]);
 bool isEqual(char hiddenWord[], char guessWord[], int size);
-//void questions(char hiddenWord[N], char question[N]);
 
 int main()
 {
+	char question[N] = "In what season do people ski?";
 	char hiddenWord[N] = "winter";
+	
+	cout << hiddenWord << endl;
+	
 	char inputLetter[N];
 	
 	int size = strlen(hiddenWord);
 	char guessWord[size] = {EMPTY};
 
-	printField(guessWord, size);
+	printField(guessWord, size, question);
 	
 	while (!isEqual(hiddenWord, guessWord, size)){
 		cout << "Enter the letter: ";
 		cin >> inputLetter;
 		cout << endl;
-		
 		
 		if (strlen(inputLetter) == size and isEqual(hiddenWord, inputLetter, size))
 			for (int i = 0; i < strlen(hiddenWord); i++)
@@ -35,15 +37,16 @@ int main()
 				if (inputLetter[0] == hiddenWord[i])
 					guessWord[i] = inputLetter[0];
 		
-		printField(guessWord, size);	
+		printField(guessWord, size, question);	
 	}
 	
 	return 0;
 }
 
-void printField(char word[], int size)
+void printField(char word[], int size, char question[])
 {
 	system("cls");
+	cout << question << endl << endl;
 	for (int i = 0; i < size; i++){
 		if (i == 0)
 			cout << "| " << word[i] << " | ";
@@ -61,15 +64,7 @@ bool isEqual(char hiddenWord[], char guessWord[], int size)
 	}	
 	return true;
 }
-//
-//void questions(char hiddenWord[N], char question[N])
-//{
-//	int random = 1;
-//	if (random == 1){
-//		hiddenWord = "winter";
-//		question = "In what season do people ski?";
-//	}
-//}
+
 
 
 
